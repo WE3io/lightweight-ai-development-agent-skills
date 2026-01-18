@@ -40,6 +40,15 @@ Surface potential decisions early by spotting patterns that may constrain future
    - Optionally draft a stub with:
      - Context
      - Decision question (not the answer)
+   - Default template (use only if no repository format exists):
+     - # ADR <number>: <title>
+     - ## Context
+     - What problem or decision is being addressed?
+     - ## Decision
+     - What is the decision being made?
+     - ## Consequences
+     - What are the tradeoffs and follow-on effects?
+   - The template is a default, not mandatory; align to existing ADR formats when present and do not auto-number.
 
 7. Stop cleanly
    - Present the decision signal (if any) and why it appears decision-like.

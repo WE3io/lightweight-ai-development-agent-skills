@@ -12,7 +12,7 @@ Design concise, independently executable work items with clear outcomes, constra
 1. Discovery first
    - Inspect the repository for existing conventions related to backlog/tasks, planning files, or work item structure.
    - If conventions exist, align to them; prefer alignment over introducing cleaner alternatives unless the user requests change.
-   - If none exist, propose a minimal default (e.g., a backlog directory with one file per item) as a suggestion only, and ask for confirmation before assuming structure or creating anything.
+   - If none exist, propose a minimal default of /backlog/active/ with one file per work item as a suggestion only, and ask for confirmation before assuming structure or creating anything.
    - Keep discovery lightweight and non-destructive.
 
 2. Interrogate intent

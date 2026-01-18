@@ -38,12 +38,14 @@ Implement exactly one ready work item, verify acceptance checks, surface risks, 
    - If checks fail, fix only what is necessary or report blockers.
 
 7. Closure (minimal)
-   - After acceptance passes, perform one minimal completion action aligned with repo conventions (e.g., update the backlog item with a short "Completed" note, move it from active to done, or append a brief entry to an existing history file).
+   - After acceptance passes, perform exactly one completion action aligned with repo conventions (e.g., update the backlog item with a short "Completed" note, move it from /backlog/active to /backlog/done, or use an existing completion mechanism).
+   - This completion action is required, not optional.
+   - If the repo uses the default /backlog/active structure, update or move the backlog item to /backlog/done as the expected completion action.
    - Do not invent new structures or create logs if none exist.
    - Never do more than one closure action.
 
 8. Stop cleanly
-   - Present a brief implementation summary, verification results, any advisory signals, and the completion action taken (if any).
+   - Present a brief implementation summary, verification results, any advisory signals, and the completion action taken.
    - Pause and return control to the human.
    - Do not continue after acceptance is met.
 
@@ -60,7 +62,7 @@ If more than one work item is referenced, refuse.
   - What changed.
   - How acceptance checks were verified.
   - Any deviations or uncertainties.
-- The completion action taken (if any).
+- The completion action taken.
 - Advisory signals from safety lenses, if any.
 
 ## Refusals
