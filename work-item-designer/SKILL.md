@@ -6,29 +6,45 @@ description: Create or refine well-formed backlog work items for AI-assisted dev
 # Work Item Designer
 
 ## Overview
-Design concise, independently executable work items with clear outcomes, constraints, checks, and non-goals. Refuse to guess intent or expand scope.
+Design concise, independently executable work items with clear outcomes, constraints, checks, and non-goals. Refuse to guess intent or expand scope. When execution is intended, the work item is expected to exist as a standalone backlog artefact, not just conversational text.
 
 ## Workflow
-1. Interrogate intent
+1. Discovery first
+   - Inspect the repository for existing conventions related to backlog/tasks, planning files, or work item structure.
+   - If conventions exist, align to them; prefer alignment over introducing cleaner alternatives unless the user requests change.
+   - If none exist, propose a minimal default (e.g., a backlog directory with one file per item) as a suggestion only, and ask for confirmation before assuming structure or creating anything.
+   - Keep discovery lightweight and non-destructive.
+
+2. Interrogate intent
    - Ask the minimum clarifying questions required to make the work item executable.
    - If intent is still ambiguous, stop and report what is missing.
 
-2. Right-size the work
+3. Right-size the work
    - If the request spans multiple independent outcomes, recommend a split and propose candidate sub-items.
 
-3. Draft the work item
+4. Draft the work item
    - Use the exact four-section format below.
    - Keep to roughly half to one page.
    - Avoid implementation detail unless required to define “done.”
 
-4. Safety lenses (advisory)
-   - Decision lens: note if the item embeds a new or irreversible decision.
-   - Documentation lens: note if it duplicates or conflicts with canonical docs.
+5. Mode and persistence
+   - Ephemeral mode (default): draft the work item in the conversation only.
+   - Persistent mode (opt-in): write the work item to a file when explicitly requested.
+   - Never persist without explicit user consent.
+   - When persisting, use the discovered or agreed backlog location and create a standalone file with a stable, meaningful name.
+   - Filename guidance: concise, stable, descriptive, and human-readable (e.g., short-action-object.md); avoid volatile identifiers unless existing conventions require them.
 
-5. Stop cleanly
+6. Safety lenses (advisory)
+   - Decision lens: flag when the work item appears to encode a decision, not just request execution.
+   - Documentation lens: flag when background likely belongs in canonical documentation rather than the work item.
+
+7. Stop cleanly
+   - Present the draft work item and any advisory signals.
+   - Pause and await explicit instruction to persist, revise, or discard.
    - Do not implement.
    - Do not prioritize, estimate, or sequence.
    - Hand control back to the user.
+   - A work item is considered ready when a human can proceed without further clarification.
 
 ## Required output format
 Use exactly these sections and order:
