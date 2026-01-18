@@ -1,186 +1,283 @@
-# Working with the Team Skills  
-*A practical guide for developers*
+# Lightweight AI Development Agent Skills
 
-This project uses a small set of **agent skills** to help humans and AI work together safely, quickly, and with minimal overhead.
+This repository contains a small, reusable set of **AI agent skills** designed to support disciplined, low-ceremony software development.
 
-These skills are **not a workflow** and **not a gatekeeping system**.  
-They are best thought of as *specialist colleagues you consult at the right moment*.
+These skills are **not a framework**, **not a workflow**, and **not a ticketing system**.  
+They are portable, team-level behaviours that help humans and AI assistants work together safely and effectively in real codebases.
 
-You remain responsible for decisions. The skills help you notice things early and leave useful traces behind.
-
----
-
-## The Five Skills (what they’re for)
-
-### 1. **Work Item Designer**
-**Use when:** you have a vague request, idea, or requirement.
-
-**What it does:**
-- Turns fuzzy input into a clear, executable work item.
-- Ensures scope, acceptance checks, and non-goals are explicit.
-- Helps split work if it’s too large.
-
-**What it does *not* do:**
-- It does not prioritise, estimate, or plan delivery.
-- It does not implement anything.
-
-**Rule of thumb:**  
-If you can’t confidently hand the work to someone else, use this first.
+They’ve been designed and exercised across:
+- solo developers and distributed teams,
+- greenfield projects and legacy systems,
+- exploratory work and production changes.
 
 ---
 
-### 2. **Safety Lens**
-**Use when:** something feels risky, unclear, or irreversible.
+## Why this exists
 
-**What it does:**
-- Surfaces missing requirements or ambiguous instructions.
-- Pauses before destructive or high-blast-radius actions.
-- Asks the minimum questions needed to proceed safely.
+AI assistants are fast, tireless, and increasingly capable — but without constraints they tend to:
+- guess when requirements are unclear,
+- expand scope opportunistically,
+- introduce accidental architectural decisions,
+- and create documentation sprawl.
 
-**What it does *not* do:**
-- It does not decide for you.
-- It does not enforce approvals or policies.
+This repo provides **five narrowly scoped skills** that address those failure modes *without* introducing process overhead.
 
-**Rule of thumb:**  
-If you’re about to say “I think this is probably fine”, use Safety Lens.
+Each skill behaves like a **bounded professional role** you invoke at the right moment:
+- to clarify work,
+- to execute safely,
+- to notice decisions early,
+- to keep documentation coherent,
+- or to pause when something looks risky.
 
----
-
-### 3. **Implementation Executor**
-**Use when:** a single, well-formed work item is ready to be built.
-
-**What it does:**
-- Implements *exactly* what the work item asks for.
-- Keeps scope tight and avoids “while I’m here” changes.
-- Verifies acceptance checks.
-- Leaves a minimal record that the work happened.
-
-**What it does *not* do:**
-- It does not expand scope.
-- It does not refactor opportunistically.
-- It does not decide architecture.
-
-**Rule of thumb:**  
-If the task is clear and bounded, let this do the execution.
+Humans remain in control at all times.
 
 ---
 
-### 4. **Decision Lens**
-**Use when:** a change might lock in a long-term choice.
+## The five skills
 
-**What it does:**
-- Flags when work crosses from “doing” into “deciding”.
-- Surfaces trade-offs neutrally.
-- Optionally helps draft a decision record.
+### 1. Work Item Designer
+Turn vague requests into clear, executable work items with explicit:
+- outcomes,
+- constraints,
+- acceptance checks,
+- and non-goals.
 
-**What it does *not* do:**
-- It does not judge correctness.
-- It does not require documentation.
-- It does not block progress.
-
-**Rule of thumb:**  
-If future-you might ask “why did we do it this way?”, run Decision Lens.
+Used during backlog intake, grooming, or whenever a request feels underspecified.
 
 ---
 
-### 5. **Documentation Lens**
-**Use when:** writing or changing documentation, explanations, or background.
+### 2. Implementation Executor
+Execute **exactly one** well-formed work item:
+- minimal changes,
+- explicit verification,
+- no scope creep,
+- and a small, durable record that the work happened.
 
-**What it does:**
-- Helps avoid duplication and doc sprawl.
-- Encourages single sources of truth.
-- Suggests where knowledge belongs (or doesn’t).
-
-**What it does *not* do:**
-- It does not edit or rewrite docs for you.
-- It does not enforce structure or templates.
-
-**Rule of thumb:**  
-If you’re writing explanation rather than code, use this before committing.
+Used once the task is genuinely ready to build.
 
 ---
 
-## A Typical Flow (how this usually looks)
+### 3. Decision Lens
+Surface when work starts to lock in long-term choices:
+- API shapes,
+- data schemas,
+- coupling,
+- irreversible patterns.
 
-This is not mandatory, just common:
+It flags *decision-ness* without enforcing documentation or blocking progress.
 
-1. **Define the work**
-   - Use *Work Item Designer* to shape the task.
+---
 
-2. **Check for risk**
-   - Use *Safety Lens* if anything is unclear or destructive.
+### 4. Documentation Lens
+Prevent documentation drift by:
+- encouraging a single source of truth,
+- preferring links over duplication,
+- and keeping docs lightweight and intentional.
 
-3. **Build**
-   - Use *Implementation Executor* to make the change.
+It reviews; it does not rewrite or enforce structure.
 
-4. **Sense-check decisions**
-   - Use *Decision Lens* if APIs, schemas, or architecture are touched.
+---
 
-5. **Write or update docs**
-   - Use *Documentation Lens* to keep docs clean and canonical.
+### 5. Safety Lens
+Detect ambiguity, risk, or large blast radius early:
+- missing requirements,
+- destructive operations,
+- irreversible changes.
 
-You can skip steps when they don’t apply.  
-You can repeat steps if understanding evolves.
+It pauses and asks for clarification instead of guessing.  
+Humans can explicitly accept risk and move on.
+
+---
+
+## How the skills are meant to be used
+
+Think of the skills as **specialist colleagues**, not automation.
+
+A common (but optional) flow looks like this:
+
+1. **Define the work**  
+   Use *Work Item Designer* to shape a vague request.
+
+2. **Check for risk**  
+   Use *Safety Lens* if anything feels unclear or risky.
+
+3. **Build**  
+   Use *Implementation Executor* to make the change.
+
+4. **Sense-check decisions**  
+   Use *Decision Lens* if APIs, schemas, or architecture are touched.
+
+5. **Handle docs**  
+   Use *Documentation Lens* to avoid duplication or misplaced explanation.
+
+You don’t have to use every skill every time.  
+“No signal detected” is a perfectly good outcome.
 
 ---
 
 ## Persistence vs conversation (important)
 
-Most skills work in **two modes**:
+Most skills operate in two modes:
 
-- **Ephemeral (default):**
-  - Think, draft, explore.
-  - Nothing is written unless you ask.
+- **Ephemeral (default)**  
+  Think, explore, review.  
+  Nothing is written unless you ask.
 
-- **Persistent (opt-in):**
-  - Backlog items, decision records, or docs are written to the repo.
-  - Always explicit. Never automatic.
+- **Persistent (opt-in)**  
+  Backlog items, decision records, or docs are written deliberately.  
+  Never automatic. Never surprising.
 
 If you want something saved, say so.  
 If you don’t, nothing will be created.
 
 ---
 
-## How to work with legacy code
+## Quick start: Greenfield project
 
-In older repos, the skills will:
-- look for existing conventions,
-- prefer aligning over “cleaning up”,
-- propose changes instead of imposing them.
+**Scenario:** You’ve just created an empty repo for a new internal service.
 
-If a suggestion doesn’t fit the context, it’s fine to say:
-> “Yes, but not here / not yet.”
+### Step 1 — Shape the work
+You have a vague request:
 
-That is a valid outcome.
+> “We need a simple todo app to validate the flow.”
 
----
+Run **Work Item Designer**:
+- It asks a couple of clarifying questions.
+- Produces a clear work item (outcome, acceptance, non-goals).
+- Proposes a minimal backlog structure and asks before creating it.
 
-## What good usage looks like
-
-- You use skills to **surface issues early**, not to outsource judgement.
-- You consciously accept or defer risks and decisions.
-- You leave behind **small, trustworthy artefacts**, not lots of process.
-- You stop when acceptance is met.
-
-## What bad usage looks like
-
-- Treating skills as approval gates.
-- Letting them make decisions silently.
-- Adding structure “because the skill suggested it”.
-- Using them to justify poor thinking.
-
-If you feel slowed down, something is being misused.
+You agree → the first backlog item is written.
 
 ---
 
-## One guiding principle
+### Step 2 — Sanity check
+You run **Safety Lens**.
 
-> **The skills exist to support professional judgement, not replace it.**
+Result:
+> “No significant risk detected.”
 
-If in doubt:
-- pause,
-- ask,
-- leave a trace,
-- and move on.
+That’s a normal, healthy outcome.
 
-That’s the whole system.
+---
+
+### Step 3 — Build
+You run **Implementation Executor**:
+- It implements exactly the described behaviour.
+- Verifies acceptance checks.
+- Records completion in the backlog item.
+
+No refactors. No extras.
+
+---
+
+### Step 4 — Decision check
+You run **Decision Lens** on the diff.
+
+Result:
+> “No decision signal detected.”
+
+You don’t write an ADR. That’s fine.
+
+---
+
+### Step 5 — Docs (optional)
+No new concepts were introduced, so you skip **Documentation Lens**.
+
+**Outcome:**  
+Working code, minimal structure, no process overhead.
+
+---
+
+## Quick start: Legacy project
+
+**Scenario:** You’re modifying a large, older codebase.
+
+### Step 1 — Shape a risky change
+Request:
+
+> “Change how user IDs are generated.”
+
+Run **Work Item Designer**:
+- It inspects existing conventions.
+- Aligns with them instead of creating new structure.
+- Produces a clear, bounded work item.
+
+---
+
+### Step 2 — Pre-flight risk
+Run **Safety Lens**.
+
+It flags:
+- persistent identifier change,
+- possible downstream impact.
+
+You explicitly confirm the risk is acceptable.
+
+---
+
+### Step 3 — Implement
+Run **Implementation Executor**:
+- Scope stays tight.
+- Non-goals are respected.
+- Completion is recorded using existing repo conventions.
+
+---
+
+### Step 4 — Catch a real decision
+Run **Decision Lens**.
+
+It flags:
+- future constraints introduced by the new ID format.
+
+You decide this is worth recording.
+- A small decision record is drafted and kept.
+
+---
+
+### Step 5 — Docs
+Run **Documentation Lens**.
+- It notices duplicated explanations.
+- Suggests linking to a single canonical source.
+
+You make a small, deliberate cleanup.
+
+**Outcome:**  
+The change is intentional, risk-aware, and legible to future developers.
+
+---
+
+## What this repo is *not*
+
+This repo does **not**:
+- automate project management,
+- replace human judgement,
+- enforce approvals or governance,
+- standardise how every team works,
+- or promise autonomous agents.
+
+If you’re looking for a workflow engine or ticket system, this is probably not the right tool.
+
+---
+
+## Design principles
+
+Everything here is guided by a few simple ideas:
+
+- **Clarity beats completeness**  
+- **Judgement over automation**  
+- **Signals, not gates**  
+- **Artifacts without bureaucracy**  
+- **Human authority is non-negotiable**
+
+If a change adds ceremony, it’s probably the wrong change.
+
+---
+
+## How teams usually adopt this
+
+Most teams:
+- copy the skills they want,
+- change wording only when real friction appears,
+- and let usage evolve through practice rather than rules.
+
+The skills are intentionally small so they can be understood, trusted, and adapted.
