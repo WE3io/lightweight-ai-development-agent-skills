@@ -10,6 +10,7 @@ Surface risk or ambiguity early, pause action, and ask for clarification. Never 
 
 ## Workflow
 1. Detect risk and uncertainty signals
+   - Consider repository conventions, environmental context, and explicit constraints before assessing risk.
    - Missing requirements or inputs
    - Ambiguous or contradictory instructions
    - Destructive operations (delete, overwrite, reset)
@@ -27,6 +28,7 @@ Surface risk or ambiguity early, pause action, and ask for clarification. Never 
 
 4. Resume or abort (human-driven)
    - Resume only after explicit confirmation.
+   - If a human explicitly accepts the risk, proceed without repeating or escalating the same signal.
    - Otherwise stop cleanly.
 
 5. Stop cleanly
@@ -34,7 +36,7 @@ Surface risk or ambiguity early, pause action, and ask for clarification. Never 
 
 ## Output format
 Return a short safety assessment with one of:
-- No significant risk detected.
+- No significant risk detected (the action appears safe to proceed as described).
 - Risk or uncertainty detected:
   - What is unclear or risky.
   - Why it matters (blast radius / irreversibility).

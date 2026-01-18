@@ -6,32 +6,45 @@ description: Detect and surface potential decision-making in work items, plans, 
 # Decision Lens
 
 ## Overview
-Surface potential decisions early by spotting patterns that may constrain future options. Provide neutral, brief signals only.
+Surface potential decisions early by spotting patterns that may constrain future options. Provide neutral, brief signals only. When a decision is intentionally recorded, it is expected to exist as a standalone decision artefact (one decision per artefact), not as an entry in a shared or append-only file.
 
 ## Workflow
-1. Scan for decision signals
-   - Interface/API changes
-   - Persistent data/schema changes
-   - New coupling between components
-   - Irreversible tech or pattern choices
-   - Behavior changes that constrain future options
+1. Discovery first
+   - Inspect the repository for existing decision-record conventions (e.g., docs/adr/, architecture decision files, historical patterns).
+   - If conventions exist, align to them.
+   - If none exist, propose a minimal default (e.g., docs/adr/ with one file per decision) as a suggestion only, and ask for confirmation before creating anything.
 
-2. Classify neutrally
+2. Scan for decision signals
+   - Changes to public interfaces or APIs
+   - Persistent data or schema changes
+   - Coupling that constrains future changes
+   - Irreversible or long-lived technology choices
+   - Avoid flagging stylistic changes, refactors that preserve contracts, or purely local implementation details.
+
+3. Classify neutrally
    - Describe what appears to be changing.
    - Avoid judging quality or correctness.
    - Avoid recommendations unless asked.
 
-3. Surface the signal
+4. Surface the signal
    - Use phrasing like: “This might be a decision because…”
    - If nothing stands out, say so plainly.
 
-4. Optional ADR prompt
-   - If appropriate, suggest capturing the decision.
+5. Mode and persistence
+   - Ephemeral mode (default): surface the decision signal only; no files are written.
+   - Persistent mode (opt-in): draft a minimal decision artefact stub when explicitly requested.
+   - Never persist automatically or append decisions to shared logs like DECISIONS.md.
+
+6. Optional decision artefact prompt
+   - If appropriate, suggest capturing the decision in a standalone artefact.
    - Optionally draft a stub with:
      - Context
      - Decision question (not the answer)
 
-5. Stop cleanly
+7. Stop cleanly
+   - Present the decision signal (if any) and why it appears decision-like.
+   - If the human explicitly defers recording, acknowledge and stop without revisiting.
+   - Pause and await instruction to persist, revise, or discard.
    - Do not follow up or persist state.
 
 ## Output format

@@ -9,32 +9,43 @@ description: Execute a single, well-formed work item with minimal, verified chan
 Implement exactly one ready work item, verify acceptance checks, surface risks, and stop. Refuse to guess intent or expand scope.
 
 ## Workflow
-1. Load and restate contracts
+1. Discovery first
+   - Inspect the repository for existing conventions related to backlog items, completion markers, or history/change records.
+   - If conventions exist, align to them.
+   - If none exist, propose a minimal completion convention (e.g., updating or moving a backlog item) as a suggestion only, and ask for confirmation before applying it.
+
+2. Load and restate contracts
    - Load the referenced work item and canonical contracts.
    - Restate Outcome, Explicit Non-Goals, and Constraints & References.
    - If anything is ambiguous, stop and ask for clarification.
 
-2. Plan minimally (internal)
+3. Plan minimally (internal)
    - Form the smallest plan needed to satisfy acceptance checks.
    - Do not produce a detailed plan unless explicitly asked.
 
-3. Implement the change
+4. Implement the change
    - Touch only what is required to meet the Outcome.
    - Avoid refactors, cleanup, or generalization beyond scope.
    - Keep the diff as small as possible.
 
-4. Safety lenses (advisory)
-   - Decision lens: note any choice that constrains future options.
-   - Safety lens: note anything unexpected or risky.
-   - Surface signals; do not resolve them autonomously.
+5. Advisory checkpoints (optional)
+   - Decision lens: consult if implementation touches interfaces, schemas, or cross-component boundaries.
+   - Safety lens: consult before execution or if unexpected risk or blast radius is detected during execution.
+   - Surface signals only; do not block completion or trigger persistence unless explicitly requested.
 
-5. Verify acceptance
+6. Verify acceptance
    - Execute all acceptance checks.
    - If checks fail, fix only what is necessary or report blockers.
 
-6. Stop cleanly
+7. Closure (minimal)
+   - After acceptance passes, perform one minimal completion action aligned with repo conventions (e.g., update the backlog item with a short "Completed" note, move it from active to done, or append a brief entry to an existing history file).
+   - Do not invent new structures or create logs if none exist.
+   - Never do more than one closure action.
+
+8. Stop cleanly
+   - Present a brief implementation summary, verification results, any advisory signals, and the completion action taken (if any).
+   - Pause and return control to the human.
    - Do not continue after acceptance is met.
-   - Hand control back to the human with results and signals.
 
 ## Input requirements
 - Exactly one well-formed work item reference.
@@ -49,6 +60,7 @@ If more than one work item is referenced, refuse.
   - What changed.
   - How acceptance checks were verified.
   - Any deviations or uncertainties.
+- The completion action taken (if any).
 - Advisory signals from safety lenses, if any.
 
 ## Refusals
@@ -58,6 +70,8 @@ Politely refuse requests to:
 - Redesign architecture or make decisions.
 - Prioritize or sequence work.
 - Work around missing requirements.
+- Add status/priority/assignment tracking.
+- Perform automatic workflow transitions or cleanup beyond scope.
 
 ## Tone
 Precise, restrained, professional. Bias toward under-action over overreach.
