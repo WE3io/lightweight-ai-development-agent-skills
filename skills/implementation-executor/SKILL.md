@@ -1,6 +1,9 @@
 ---
 name: implementation-executor
-description: Execute a single, well-formed work item with minimal, verified changes. Use when a backlog item is ready for implementation and work must proceed safely without scope creep.
+description: Execute a single, well-formed work item with minimal, verified changes. Use when a backlog item is ready for implementation and work must proceed safely without scope creep. Trigger phrases: "implement this", "implement task", "implement work item", "execute this", "do this task", "complete this", "work on this", "implement backlog", "implement the task", "execute the task", "complete the task", "work on the task", "implement phase1", "implement phase2", "do phase1", "complete phase1", "work on phase1", "implement this item", "execute this item", "complete this item", "start implementing", "begin implementation", "get started on", "tackle this task".
+version: 1.0.0
+license: MIT
+author: Sunil (sunil@we3.io)
 ---
 
 # Implementation Executor

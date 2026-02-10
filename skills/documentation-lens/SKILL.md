@@ -1,12 +1,17 @@
 ---
 name: documentation-lens
-description: Flag possible documentation duplication, misplacement, or verbosity. Use when drafting or reviewing docs, backlog items, ADRs, or explanatory text to steer toward a single source of truth.
+description: Flag possible documentation duplication, misplacement, or verbosity. Use when drafting or reviewing docs, backlog items, ADRs, or explanatory text to steer toward a single source of truth. Trigger phrases: "check documentation", "review docs", "check docs", "review documentation", "check for doc duplication", "review for duplication", "check doc quality", "review doc quality", "documentation review", "docs review", "check doc structure".
+version: 1.0.0
+license: MIT
+author: Sunil (sunil@we3.io)
 ---
 
 # Documentation Lens
 
 ## Overview
 Provide brief, neutral signals when documentation may be duplicated, misplaced, or over-explained. Prefer links over restatement. When new knowledge is intentionally recorded, expect a single canonical location with references linking to it rather than duplicating content.
+
+**Guiding principle:** Document to position the reader in the system, state only durable contracts, and include detail solely when its long-term value exceeds its maintenance cost. (See `documentation-principles.md` for full guidance.)
 
 ## Workflow
 1. Discovery first
@@ -26,10 +31,12 @@ Provide brief, neutral signals when documentation may be duplicated, misplaced, 
    - Persistent mode (opt-in): write or edit documentation files only with explicit human instruction, aligned with discovered or agreed conventions.
 
 5. Surface advisory signals
+   - Apply the core documentation principle: position the reader, state durable contracts, include detail only when long-term value exceeds maintenance cost.
    - Use phrasing like:
-     - “This looks similar to…”
-     - “You might consider linking to…”
-     - “This may fit better in…”
+     - "This looks similar to…"
+     - "You might consider linking to…"
+     - "This may fit better in…"
+     - "This detail may have low long-term value relative to maintenance cost…"
    - Focus on conceptual duplication, misplaced background, or explanatory but non-authoritative docs.
    - Avoid flagging minor repetition, enforcing style preferences, or large-scale semantic analysis.
    - Do not prescribe exact edits.

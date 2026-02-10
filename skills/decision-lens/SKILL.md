@@ -1,6 +1,9 @@
 ---
 name: decision-lens
-description: Detect and surface potential decision-making in work items, plans, diffs, docs, or summaries. Use to flag possible decisions neutrally without enforcing process.
+description: Detect and surface potential decision-making in work items, plans, diffs, docs, or summaries. Use to flag possible decisions neutrally without enforcing process. Trigger phrases: "check for decisions", "flag decisions", "review for decisions", "find decisions", "identify decisions", "check decisions", "decision check", "review decisions", "flag architectural decisions", "check architectural decisions", "find architectural choices".
+version: 1.0.0
+license: MIT
+author: Sunil (sunil@we3.io)
 ---
 
 # Decision Lens

@@ -12,6 +12,29 @@ They’ve been designed and exercised across:
 
 ---
 
+## Canonical skill source
+
+The canonical source of truth is the `skills/` directory:
+
+```text
+skills/
+  work-item-designer/
+    SKILL.md
+  implementation-executor/
+    SKILL.md
+  decision-lens/
+    SKILL.md
+  documentation-lens/
+    SKILL.md
+  safety-lens/
+    SKILL.md
+```
+
+Each directory maps one-to-one to the five roles below.  
+Tool-specific directories are mirrors created from this source; they are not edited directly.
+
+---
+
 ## Why this exists
 
 AI assistants are fast, tireless, and increasingly capable — but without constraints they tend to:
@@ -72,9 +95,12 @@ It flags *decision-ness* without enforcing documentation or blocking progress.
 Prevent documentation drift by:
 - encouraging a single source of truth,
 - preferring links over duplication,
-- and keeping docs lightweight and intentional.
+- keeping docs lightweight and intentional,
+- and applying the principle: *document to position the reader in the system, state only durable contracts, and include detail solely when its long-term value exceeds its maintenance cost*.
 
 It reviews; it does not rewrite or enforce structure.
+
+See `documentation-principles.md` for full documentation guidance.
 
 ---
 
@@ -254,6 +280,25 @@ This repo does **not**:
 - enforce approvals or governance,
 - standardise how every team works,
 - or promise autonomous agents.
+
+---
+
+## Deployment surface (defined, deliberate, manual)
+
+This repository supports four tool discovery paths by mirroring `skills/` into:
+
+- `.claude/skills/`
+- `.agents/skills/`
+- `.cursor/skills/`
+- `.gemini/skills/`
+
+Deployment is intentionally manual and repo-scoped by default:
+- copy from `skills/` into each tool path,
+- do not use symlinks,
+- do not run automatically,
+- and do not delete or mutate files that were not created by this repository.
+
+Treat deployment as a deliberate operational skill: invoke it explicitly when you want to refresh mirrors.
 
 If you’re looking for a workflow engine or ticket system, this is probably not the right tool.
 
