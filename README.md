@@ -1,5 +1,18 @@
 # Lightweight AI Development Agent Skills
 
+<table style="background-color: #F4EAD0;color: #29004B;">
+  <tr>
+    <td width="132" style="border:none; background-color: #F4EAD0;" valign="middle">
+      <a href="https://we3.io"><img src="assets/WE3io-logo-200px.png" alt="WE3io Logo" width="56" /></a>
+    </td>
+    <td style="border:none; background-color: #ffF4EAD0f;">
+      <strong>WE3</strong> builds products and companies with senior Product, Design, and Engineering teams. This repository is part of our open-source community offerings. <a href="https://we3.io/brief">Start your brief</a>.
+    </td>
+  </tr>
+</table>
+
+---
+
 This repository contains a small, reusable set of **AI agent skills** designed to support disciplined, low-ceremony software development.
 
 These skills are **not a framework**, **not a workflow**, and **not a ticketing system**.  
@@ -9,6 +22,32 @@ They’ve been designed and exercised across:
 - solo developers and distributed teams,
 - greenfield projects and legacy systems,
 - exploratory work and production changes.
+
+---
+
+## Quick navigation
+
+- [Lightweight AI Development Agent Skills](#lightweight-ai-development-agent-skills)
+  - [Quick navigation](#quick-navigation)
+  - [Canonical skill source](#canonical-skill-source)
+  - [Why this exists](#why-this-exists)
+  - [The five skills](#the-five-skills)
+    - [1. Work Item Designer](#1-work-item-designer)
+    - [2. Implementation Executor](#2-implementation-executor)
+    - [3. Decision Lens](#3-decision-lens)
+    - [4. Documentation Lens](#4-documentation-lens)
+    - [5. Safety Lens](#5-safety-lens)
+  - [How the skills are meant to be used](#how-the-skills-are-meant-to-be-used)
+  - [Invocation examples](#invocation-examples)
+  - [Persistence vs conversation (important)](#persistence-vs-conversation-important)
+  - [Quick starts](#quick-starts)
+    - [Greenfield project](#greenfield-project)
+    - [Legacy project](#legacy-project)
+  - [What this repo is *not*](#what-this-repo-is-not)
+  - [Installation and deployment](#installation-and-deployment)
+  - [Design principles](#design-principles)
+  - [How teams usually adopt this](#how-teams-usually-adopt-this)
+  - [Related](#related)
 
 ---
 
@@ -141,6 +180,18 @@ You don’t have to use every skill every time.
 
 ---
 
+## Invocation examples
+
+Use plain requests in your assistant:
+
+- `Use work-item-designer to shape this into one executable task.`
+- `Run safety-lens on this plan and flag any risky assumptions.`
+- `Use implementation-executor to implement this item exactly as written.`
+- `Run decision-lens on this diff and flag potential architectural decisions.`
+- `Use documentation-lens to check for duplication or misplaced docs.`
+
+---
+
 ## Persistence vs conversation (important)
 
 Most skills operate in two modes:
@@ -158,114 +209,34 @@ If you don’t, nothing will be created.
 
 ---
 
-## Quick start: Greenfield project
+## Quick starts
+
+### Greenfield project
 
 **Scenario:** You’ve just created an empty repo for a new internal service.
 
-### Step 1 — Shape the work
-You have a vague request:
-
-> “We need a simple todo app to validate the flow.”
-
-Run **Work Item Designer**:
-- It asks a couple of clarifying questions.
-- Produces a clear work item (outcome, acceptance, non-goals).
-- Proposes a minimal backlog structure and asks before creating it.
-
-You agree → the first backlog item is written.
-
----
-
-### Step 2 — Sanity check
-You run **Safety Lens**.
-
-Result:
-> “No significant risk detected.”
-
-That’s a normal, healthy outcome.
-
----
-
-### Step 3 — Build
-You run **Implementation Executor**:
-- It implements exactly the described behaviour.
-- Verifies acceptance checks.
-- Records completion in the backlog item.
-
-No refactors. No extras.
-
----
-
-### Step 4 — Decision check
-You run **Decision Lens** on the diff.
-
-Result:
-> “No decision signal detected.”
-
-You don’t write an ADR. That’s fine.
-
----
-
-### Step 5 — Docs (optional)
-No new concepts were introduced, so you skip **Documentation Lens**.
+1. Shape the work with **Work Item Designer** from a vague request like:  
+   > "We need a simple todo app to validate the flow."
+2. Run **Safety Lens** for a quick pre-flight risk check.
+3. Implement with **Implementation Executor** using the accepted work item only.
+4. Run **Decision Lens** on the diff if architecture might have changed.
+5. Use **Documentation Lens** only if new durable knowledge was introduced.
 
 **Outcome:**  
 Working code, minimal structure, no process overhead.
 
 ---
 
-## Quick start: Legacy project
+### Legacy project
 
 **Scenario:** You’re modifying a large, older codebase.
 
-### Step 1 — Shape a risky change
-Request:
-
-> “Change how user IDs are generated.”
-
-Run **Work Item Designer**:
-- It inspects existing conventions.
-- Aligns with them instead of creating new structure.
-- Produces a clear, bounded work item.
-
----
-
-### Step 2 — Pre-flight risk
-Run **Safety Lens**.
-
-It flags:
-- persistent identifier change,
-- possible downstream impact.
-
-You explicitly confirm the risk is acceptable.
-
----
-
-### Step 3 — Implement
-Run **Implementation Executor**:
-- Scope stays tight.
-- Non-goals are respected.
-- Completion is recorded using existing repo conventions.
-
----
-
-### Step 4 — Catch a real decision
-Run **Decision Lens**.
-
-It flags:
-- future constraints introduced by the new ID format.
-
-You decide this is worth recording.
-- A small decision record is drafted and kept.
-
----
-
-### Step 5 — Docs
-Run **Documentation Lens**.
-- It notices duplicated explanations.
-- Suggests linking to a single canonical source.
-
-You make a small, deliberate cleanup.
+1. Shape a risky request with **Work Item Designer**, for example:  
+   > "Change how user IDs are generated."
+2. Run **Safety Lens** and explicitly confirm risk when identifier changes are involved.
+3. Execute with **Implementation Executor** and keep scope tight.
+4. Run **Decision Lens** and record only meaningful, long-term decisions.
+5. Run **Documentation Lens** to consolidate duplicated explanation into canonical docs.
 
 **Outcome:**  
 The change is intentional, risk-aware, and legible to future developers.
@@ -283,22 +254,19 @@ This repo does **not**:
 
 ---
 
-## Deployment surface (defined, deliberate, manual)
+## Installation and deployment
 
-This repository supports four tool discovery paths by mirroring `skills/` into:
+`skills/` is the only source of truth. Installation mirrors that directory into tool discovery paths.
 
-- `.claude/skills/`
-- `.codex/skills/`
-- `.cursor/skills/`
-- `.gemini/skills/`
+Use the installer script:
 
-Deployment is intentionally manual and repo-scoped by default:
-- copy from `skills/` into each tool path,
-- do not use symlinks,
-- do not run automatically,
-- and do not delete or mutate files that were not created by this repository.
+```bash
+scripts/install-skills.sh --target /path/to/target-repo
+```
 
-Treat deployment as a deliberate operational skill: invoke it explicitly when you want to refresh mirrors.
+For full target paths, options (`--scope`, `--dry-run`, `--skip-existing`, `--overwrite`), and safety behavior, see [INSTALLATION.md](INSTALLATION.md).
+
+Installation is opt-in: run when you want to refresh mirrors, not automatically on clone, CI, or deploy.
 
 If you’re looking for a workflow engine or ticket system, this is probably not the right tool.
 
@@ -326,3 +294,11 @@ Most teams:
 - and let usage evolve through practice rather than rules.
 
 The skills are intentionally small so they can be understood, trusted, and adapted.
+
+---
+
+## Related
+
+**[AI Assistant Rules](https://github.com/WE3io/ai-assistant-rules/)** — Unified rules and best practices for AI coding assistants (Cursor, Claude Code, Codex, Gemini CLI, Antigravity), derived from AI Blindspots. Use it alongside these skills for comprehensive guidance across tools.
+
+See also [CONTRIBUTING.md](CONTRIBUTING.md) for contribution scope and review expectations.

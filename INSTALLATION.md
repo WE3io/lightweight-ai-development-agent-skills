@@ -25,9 +25,11 @@ User-scoped install targets:
 - `~/.gemini/skills/`
 - `~/.gemini/antigravity/skills/`
 
-## Deployment skill (manual invocation)
+## Deployment approach (opt-in)
 
-Use deployment deliberately as an operational skill:
+Installation is opt-in: run the script when you want to refresh mirrors — not automatically on clone, CI, or deploy.
+
+If copying by hand instead of using the script:
 
 1. Read from `skills/`.
 2. Copy each skill directory into each discovery path.
@@ -35,9 +37,7 @@ Use deployment deliberately as an operational skill:
 4. Do not use symlinks.
 5. Do not delete or mutate files that were not created by this mirror operation.
 
-This deployment approach is intentionally not automated.
-
-## Scripted install (manual command)
+## Scripted install
 
 Run from this repository:
 
