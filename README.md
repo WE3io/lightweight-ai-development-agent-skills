@@ -288,7 +288,7 @@ This repo does **not**:
 This repository supports four tool discovery paths by mirroring `skills/` into:
 
 - `.claude/skills/`
-- `.agents/skills/`
+- `.codex/skills/`
 - `.cursor/skills/`
 - `.gemini/skills/`
 

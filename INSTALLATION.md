@@ -13,14 +13,14 @@ This repository stores five canonical skills in `skills/` and mirrors them into 
 Mirror `skills/` into these repo-scoped paths:
 
 - `.claude/skills/`
-- `.agents/skills/`
+- `.codex/skills/`
 - `.cursor/skills/`
 - `.gemini/skills/`
 
 User-scoped install targets:
 
+- `~/.codex/skills/`
 - `~/.claude/skills/`
-- `~/.agents/skills/`
 - `~/.gemini/skills/`
 - `~/.gemini/antigravity/skills/`
 

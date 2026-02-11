@@ -11,7 +11,7 @@ Usage:
 Options:
   --target <path>  Target repository root (repo scope only). Defaults to current working directory.
   --scope <scope>  repo (default): install into repo-local paths under target root.
-                   user: install into $HOME/.claude, .agents, .gemini, .gemini/antigravity.
+                   user: install into $HOME/.codex, .claude, .gemini, .gemini/antigravity.
                    both: install into both repo and user targets.
   --dry-run        Print actions without copying files.
   --skip-existing  Do not copy into skill directories that already exist at the destination.
@@ -19,8 +19,8 @@ Options:
   -h, --help       Show this help.
 
 Behavior:
-- Repo scope (default): installs into .claude/skills/, .agents/skills/, .cursor/skills/, .gemini/skills/
-- User scope: installs into $HOME/.claude/skills/, .agents/skills/, .gemini/skills/, .gemini/antigravity/skills/
+- Repo scope (default): installs into .codex/skills/, .claude/skills/, .cursor/skills/, .gemini/skills/
+- User scope: installs into $HOME/.codex/skills/, .claude/skills/, .gemini/skills/, .gemini/antigravity/skills/
   (Cursor has no user-scoped target; it remains repo-only.)
 - Only directories under ./skills/ that contain SKILL.md are installed.
 - Creates missing target directories. Merge copy into skill directories with the same name.
@@ -122,28 +122,28 @@ TARGET_ENTRIES=()
 case "${SCOPE}" in
   repo)
     TARGET_ENTRIES=(
+      "repo|${TARGET_ROOT}/.codex/skills"
       "repo|${TARGET_ROOT}/.claude/skills"
-      "repo|${TARGET_ROOT}/.agents/skills"
       "repo|${TARGET_ROOT}/.cursor/skills"
       "repo|${TARGET_ROOT}/.gemini/skills"
     )
     ;;
   user)
     TARGET_ENTRIES=(
+      "user|${HOME}/.codex/skills"
       "user|${HOME}/.claude/skills"
-      "user|${HOME}/.agents/skills"
       "user|${HOME}/.gemini/skills"
       "user|${HOME}/.gemini/antigravity/skills"
     )
     ;;
   both)
     TARGET_ENTRIES=(
+      "repo|${TARGET_ROOT}/.codex/skills"
       "repo|${TARGET_ROOT}/.claude/skills"
-      "repo|${TARGET_ROOT}/.agents/skills"
       "repo|${TARGET_ROOT}/.cursor/skills"
       "repo|${TARGET_ROOT}/.gemini/skills"
+      "user|${HOME}/.codex/skills"
       "user|${HOME}/.claude/skills"
-      "user|${HOME}/.agents/skills"
       "user|${HOME}/.gemini/skills"
       "user|${HOME}/.gemini/antigravity/skills"
     )

@@ -1,6 +1,6 @@
 ---
 name: work-item-designer
-description: Create or refine well-formed backlog work items for AI-assisted development. Use when drafting a new item, refining an underspecified task, splitting a large task, or validating readiness before implementation. Trigger phrases: "create backlog", "create work item", "design task", "create task", "write backlog item", "create backlog item", "design work item", "refine task", "split task", "break down task", "create a task for", "make a backlog item", "write a work item", "create an item for", "design an item for", "plan the work", "create items for", "break this down", "split this into tasks".
+description: 'Create or refine well-formed backlog work items for AI-assisted development. Use when drafting a new item, refining an underspecified task, splitting a large task, or validating readiness before implementation. Trigger phrases: "create backlog", "create work item", "design task", "create task", "write backlog item", "create backlog item", "design work item", "refine task", "split task", "break down task", "create a task for", "make a backlog item", "write a work item", "create an item for", "design an item for", "plan the work", "create items for", "break this down", "split this into tasks".'
 version: 1.0.0
 license: MIT
 author: Sunil (sunil@we3.io)

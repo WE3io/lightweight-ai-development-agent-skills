@@ -1,6 +1,6 @@
 ---
 name: safety-lens
-description: Detect risk or uncertainty and pause execution. Use before or after plans, commands, diffs, or implementation to surface unclear requirements or risky actions. Trigger phrases: "check for risks", "is this safe", "review for safety", "check safety", "risk check", "safety review", "is this risky", "check risks", "review risks", "safety check", "verify safety", "check if safe", "assess risk", "risk assessment", "safety assessment".
+description: 'Detect risk or uncertainty and pause execution. Use before or after plans, commands, diffs, or implementation to surface unclear requirements or risky actions. Trigger phrases: "check for risks", "is this safe", "review for safety", "check safety", "risk check", "safety review", "is this risky", "check risks", "review risks", "safety check", "verify safety", "check if safe", "assess risk", "risk assessment", "safety assessment".'
 version: 1.0.0
 license: MIT
 author: Sunil (sunil@we3.io)

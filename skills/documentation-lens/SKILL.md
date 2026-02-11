@@ -1,6 +1,6 @@
 ---
 name: documentation-lens
-description: Flag possible documentation duplication, misplacement, or verbosity. Use when drafting or reviewing docs, backlog items, ADRs, or explanatory text to steer toward a single source of truth. Trigger phrases: "check documentation", "review docs", "check docs", "review documentation", "check for doc duplication", "review for duplication", "check doc quality", "review doc quality", "documentation review", "docs review", "check doc structure".
+description: 'Flag possible documentation duplication, misplacement, or verbosity. Use when drafting or reviewing docs, backlog items, ADRs, or explanatory text to steer toward a single source of truth. Trigger phrases: "check documentation", "review docs", "check docs", "review documentation", "check for doc duplication", "review for duplication", "check doc quality", "review doc quality", "documentation review", "docs review", "check doc structure".'
 version: 1.0.0
 license: MIT
 author: Sunil (sunil@we3.io)
