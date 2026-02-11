@@ -17,6 +17,13 @@ Mirror `skills/` into these repo-scoped paths:
 - `.cursor/skills/`
 - `.gemini/skills/`
 
+User-scoped install targets:
+
+- `~/.claude/skills/`
+- `~/.agents/skills/`
+- `~/.gemini/skills/`
+- `~/.gemini/antigravity/skills/`
+
 ## Deployment skill (manual invocation)
 
 Use deployment deliberately as an operational skill:
@@ -38,9 +45,33 @@ scripts/install-skills.sh --target /path/to/target-repo
 ```
 
 Optional:
+- `--scope repo|user|both` selects repo-scoped, user-scoped, or both target sets.
 - `--dry-run` previews target paths and copy actions.
 - `--skip-existing` avoids writing into existing skill directories.
 - `--overwrite` replaces existing skill directories only after an interactive confirmation prompt.
+
+Examples:
+
+```bash
+# Repo-scoped install (default)
+scripts/install-skills.sh --target /path/to/target-repo
+
+# User-scoped install
+scripts/install-skills.sh --scope user
+
+# Install both repo and user targets
+scripts/install-skills.sh --scope both --target /path/to/target-repo
+```
+
+## Smoke test
+
+Run the non-interactive smoke test suite:
+
+```bash
+scripts/test-install-skills.sh
+```
+
+This validates argument handling, dry-run path expansion, repo/user installs, skip-existing behavior, and target deduplication for `--scope both`.
 
 ## Overwrite backups and restore
 
