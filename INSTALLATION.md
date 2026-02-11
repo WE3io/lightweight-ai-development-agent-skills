@@ -21,6 +21,7 @@ User-scoped install targets:
 
 - `~/.codex/skills/`
 - `~/.claude/skills/`
+- `~/.cursor/skills/`
 - `~/.gemini/skills/`
 - `~/.gemini/antigravity/skills/`
 

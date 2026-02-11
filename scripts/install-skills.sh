@@ -11,7 +11,7 @@ Usage:
 Options:
   --target <path>  Target repository root (repo scope only). Defaults to current working directory.
   --scope <scope>  repo (default): install into repo-local paths under target root.
-                   user: install into $HOME/.codex, .claude, .gemini, .gemini/antigravity.
+                   user: install into $HOME/.codex, .claude, .cursor, .gemini, .gemini/antigravity.
                    both: install into both repo and user targets.
   --dry-run        Print actions without copying files.
   --skip-existing  Do not copy into skill directories that already exist at the destination.
@@ -20,8 +20,7 @@ Options:
 
 Behavior:
 - Repo scope (default): installs into .codex/skills/, .claude/skills/, .cursor/skills/, .gemini/skills/
-- User scope: installs into $HOME/.codex/skills/, .claude/skills/, .gemini/skills/, .gemini/antigravity/skills/
-  (Cursor has no user-scoped target; it remains repo-only.)
+- User scope: installs into $HOME/.codex/skills/, .claude/skills/, .cursor/skills/, .gemini/skills/, .gemini/antigravity/skills/
 - Only directories under ./skills/ that contain SKILL.md are installed.
 - Creates missing target directories. Merge copy into skill directories with the same name.
 - In --overwrite mode, backs up replaced directories to a temporary location first.
@@ -132,6 +131,7 @@ case "${SCOPE}" in
     TARGET_ENTRIES=(
       "user|${HOME}/.codex/skills"
       "user|${HOME}/.claude/skills"
+      "user|${HOME}/.cursor/skills"
       "user|${HOME}/.gemini/skills"
       "user|${HOME}/.gemini/antigravity/skills"
     )
@@ -144,6 +144,7 @@ case "${SCOPE}" in
       "repo|${TARGET_ROOT}/.gemini/skills"
       "user|${HOME}/.codex/skills"
       "user|${HOME}/.claude/skills"
+      "user|${HOME}/.cursor/skills"
       "user|${HOME}/.gemini/skills"
       "user|${HOME}/.gemini/antigravity/skills"
     )

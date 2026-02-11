@@ -6,7 +6,7 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 INSTALL_SCRIPT="${REPO_ROOT}/scripts/install-skills.sh"
 SKILL_COUNT="$(find "${REPO_ROOT}/skills" -mindepth 2 -maxdepth 2 -type f -name SKILL.md | wc -l | tr -d ' ')"
 REPO_TARGET_COUNT=4
-USER_TARGET_COUNT=4
+USER_TARGET_COUNT=5
 
 fail() {
   echo "FAIL: $1" >&2
@@ -63,6 +63,7 @@ mkdir -p "${user_home}"
 user_dry="$(HOME="${user_home}" "${INSTALL_SCRIPT}" --dry-run --scope user)"
 assert_contains "${user_dry}" "${user_home}/.gemini/antigravity/skills" "user dry-run should include gemini antigravity path"
 assert_contains "${user_dry}" "${user_home}/.codex/skills" "user dry-run should include codex user path"
+assert_contains "${user_dry}" "${user_home}/.cursor/skills" "user dry-run should include cursor user path"
 pass "user dry-run paths"
 
 # 4) Real install checks
@@ -80,7 +81,7 @@ pass "user install file count"
 
 # 5) Skip existing should skip all existing skill targets in repo scope
 skip_out="$("${INSTALL_SCRIPT}" --scope repo --target "${repo_target}" --skip-existing)"
-skip_count="$(printf "%s\n" "${skip_out}" | rg -c "^Skipped existing: ")"
+skip_count="$(printf "%s\n" "${skip_out}" | grep -c "^Skipped existing: " 2>/dev/null || echo 0)"
 assert_eq "${skip_count}" "${expected_repo_count}" "skip-existing should skip all existing repo skill targets"
 pass "skip-existing behavior"
 
@@ -88,8 +89,8 @@ pass "skip-existing behavior"
 same_home="${tmp_root}/same-home"
 mkdir -p "${same_home}"
 both_dry="$(HOME="${same_home}" "${INSTALL_SCRIPT}" --dry-run --scope both --target "${same_home}")"
-ensure_count="$(printf "%s\n" "${both_dry}" | rg "^Would ensure directory: " | wc -l | tr -d ' ')"
-unique_count="$(printf "%s\n" "${both_dry}" | rg "^Would ensure directory: " | sort -u | wc -l | tr -d ' ')"
+ensure_count="$(printf "%s\n" "${both_dry}" | grep "^Would ensure directory: " | wc -l | tr -d ' ')"
+unique_count="$(printf "%s\n" "${both_dry}" | grep "^Would ensure directory: " | sort -u | wc -l | tr -d ' ')"
 assert_eq "${ensure_count}" "${unique_count}" "both scope should not emit duplicate ensure-directory targets"
 pass "both scope dedupe"
 
