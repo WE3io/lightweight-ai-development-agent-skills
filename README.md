@@ -100,7 +100,7 @@ Prevent documentation drift by:
 
 It reviews; it does not rewrite or enforce structure.
 
-See `documentation-principles.md` for full documentation guidance.
+See `skills/documentation-lens/documentation-principles.md` for full documentation guidance.
 
 ---
 
